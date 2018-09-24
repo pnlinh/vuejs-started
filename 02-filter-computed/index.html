@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>My App</h1>
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            bobby: {
+                first: "Bobby",
+                last: "Boone",
+                age: 25
+            },
+            john: {
+                first: "John",
+                last: "Boone",
+                age: 35,
+            }
+        },
+        computed: {
+            johnAgeInOneYear() {
+                return this.john.age + 1;
+            }
+        },
+        filters: {
+            fullName(value) {
+                return `${value.last} ${value.first}`;
+            },
+            ageInOneYear(age) {
+                return age + 1;
+            }
+        },
+        template: `
+            <div>
+                <h1>Name: {{ john | fullName }}</h1>
+                <h2>Age: {{ john.age | ageInOneYear }}</h2>
+
+                <h1>Name: {{ bobby | fullName }}</h1>
+                <h2>Age: {{ bobby.age | ageInOneYear }}</h2>
+            </div>
+        `
+    });
+</script>
+</body>
+</html>
