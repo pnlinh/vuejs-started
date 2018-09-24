@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>My App</h1>
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            linh: {
+                name: 'Lịnh',
+                age: 23
+            },
+            my: {
+                name: 'Mỹ',
+                age: 21
+            }
+        },
+        template: `
+            <div>
+                <h1>Name: {{ linh.name }}</h1>
+                <h2>Age: {{ linh.age }}</h2>
+
+                <h1>Name: {{ my.name }}</h1>
+                <h2>Age: {{ my.age }}</h2>
+            </div>
+        `
+    });
+</script>
+</body>
+</html>
