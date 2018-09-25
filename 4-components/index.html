@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>My App</h1>
+<div id="app"></div>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.component('friend-component', {
+        props: ['friend'],
+        filters: {
+            fullName(value) {
+                return `${value.last} ${value.first}`;
+            },
+            ageInOneYear(age) {
+                return age + 1;
+            }
+        },
+        methods: {
+            incrementAge(friend) {
+                friend.age += 1;
+            },
+            decrementAge(friend) {
+                friend.age -= 1;
+            }
+        },
+        template: `
+        <div>
+                <h4>{{ friend | fullName }}</h4>
+                <h5>Age: {{ friend.age }}</h5>
+                <button v-on:click="decrementAge(friend)">-</button>
+                <button v-on:click="incrementAge(friend)">+</button>
+                <input type="text" v-model="friend.first">
+                <input type="text" v-model="friend.last">
+                </h2>
+        </div>
+        `
+    });
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            friends: [
+                {
+                    first: "Bobby",
+                    last: "Boone",
+                    age: 25
+                },
+                {
+                    first: "John",
+                    last: "Boone",
+                    age: 35,
+                }
+            ]
+        },
+        template: `
+            <div>
+              <friend-component v-for="item in friends" v-bind:friend="item" />
+            </div>
+  `
+    });
+</script>
+</body>
+</html>
