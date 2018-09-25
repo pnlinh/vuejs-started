@@ -15,18 +15,18 @@
     Vue.component('friend-component', {
         props: ['friend'],
         filters: {
-            fullName(value) {
+            fullName: value => {
                 return `${value.last} ${value.first}`;
             },
-            ageInOneYear(age) {
+            ageInOneYear: age => {
                 return age + 1;
             }
         },
         methods: {
-            incrementAge(friend) {
+            incrementAge: friend => {
                 friend.age += 1;
             },
-            decrementAge(friend) {
+            decrementAge: friend => {
                 friend.age -= 1;
             }
         },
